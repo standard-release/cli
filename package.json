@@ -4,32 +4,44 @@
   "license": "Apache-2.0",
   "licenseStart": "2018",
   "scripts": {
-    "start": "tunnckocore-scripts",
-    "extends": "@tunnckocore/config/scripts",
-    "docs": "tunnckocore-scripts docs",
-    "lint": "tunnckocore-scripts lint",
-    "test": "tunnckocore-scripts test",
-    "commit": "tunnckocore-scripts commit"
+    "docs": "docks --outfile .verb.md && verb",
+    "lint": "eslint src test index.js cli.js --cache --fix --quiet --format codeframe",
+    "test": "nyc asia",
+    "commit": "yarn lint && yarn test && yarn dry",
+    "dry": "git add -A && git status --porcelain && gitcommit -sS",
+    "release": "node cli.js"
   },
   "engines": {
     "node": "^8.11.0 || >=10.13.0"
   },
   "dependencies": {
-    "esm": "^3.0.84"
+    "@tunnckocore/execa": "^2.1.2",
+    "dedent": "^0.7.0",
+    "esm": "^3.0.84",
+    "git-commits-since": "^1.0.2",
+    "is-ci": "^1.2.1",
+    "mri": "^1.1.1"
   },
   "devDependencies": {
-    "@tunnckocore/config": "^0.5.2",
-    "@tunnckocore/scripts": "^1.1.0",
-    "asia": "^0.19.7"
+    "asia": "^0.19.7",
+    "eslint": "^5.8.0",
+    "eslint-config-esmc": "^1.0.12",
+    "gitcommit": "^1.0.13"
   },
   "files": [
     "src",
-    "index.js"
+    "index.js",
+    "cli.js"
   ],
+  "bin": {
+    "release": "cli.js",
+    "release-cli": "cli.js",
+    "tunnckocore-release": "cli.js"
+  },
   "main": "index.js",
   "module": "src/index.js",
   "typings": "src/index.d.ts",
-  "version": "0.5.0",
+  "version": "0.0.0",
   "repository": "tunnckoCoreLabs/release-cli",
   "homepage": "https://github.com/tunnckoCore/release-cli",
   "author": "Charlike Mike Reagent (https://tunnckocore.com)",
