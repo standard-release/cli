@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "asia": "^0.19.7",
+    "docks": "^0.6.0",
     "eslint": "^5.8.0",
     "eslint-config-esmc": "^1.0.12",
     "gitcommit": "^1.0.13"

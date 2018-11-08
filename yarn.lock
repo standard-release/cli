@@ -52,7 +52,7 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.0.0", "@babel/parser@^7.1.2", "@babel/parser@^7.1.5":
+"@babel/parser@^7.0.0", "@babel/parser@^7.1.2", "@babel/parser@^7.1.3", "@babel/parser@^7.1.5":
   version "7.1.5"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.1.5.tgz#20b7d5e7e1811ba996f8a868962ea7dd2bfcd2fc"
   integrity sha512-WXKf5K5HT6X0kKiCOezJZFljsfxKV1FpU8Tf1A7ZpGvyd/Q4hlrJm2EwoH2onaUq3O4tLDp+4gk0hHPsMyxmOg==
@@ -662,6 +662,18 @@ detect-next-version@^3.0.1:
     esm "^3.0.84"
     parse-commit-message "1.1.2"
     recommended-bump "^1.2.0"
+
+docks@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/docks/-/docks-0.6.0.tgz#22950bfb4b9dc350f5c4bddf11429bed8592697d"
+  integrity sha512-pt48mXgdTTW6w695tyGomnZHH935lrUxH9ccp48mJwhJlnAAQr1Xuf6URPsWLz+9brQX3HlS+rZOx8eL3BtcEg==
+  dependencies:
+    "@babel/parser" "^7.1.3"
+    doctrine "^2.1.0"
+    esm "^3.0.84"
+    fast-glob "^2.2.2"
+    mkdirp "^0.5.1"
+    mri "^1.1.1"
 
 doctrine@1.5.0:
   version "1.5.0"
