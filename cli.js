@@ -31,6 +31,10 @@ const writeFile = (fp, content) => util.promisify(fs.writeFile)(fp, content);
 
 release(argv)
   .then(async (result) => {
+    if (!result.nextVersion) {
+      console.log('Skipping NPM publish');
+      return null;
+    }
     if (!proc.env.NPM_TOKEN) {
       throw new Error('Expect NPM_TOKEN environment variable to be set.');
     }
