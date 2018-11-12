@@ -10,9 +10,11 @@ const proc = require('process');
 const ded = require('dedent');
 const isCI = require('is-ci');
 const parser = require('mri');
+const getPkg = require('@tunnckocore/package-json');
 const { exec } = require('@tunnckocore/execa');
 
 const release = require('./index');
+const pkg = require('./package');
 
 const argv = parser(proc.argv.slice(2), {
   default: {
@@ -21,18 +23,33 @@ const argv = parser(proc.argv.slice(2), {
   },
 });
 
-if (argv.ci && !isCI) {
-  console.error('Publishing is only allowed on CI service!');
-  console.error('Try passing --no-ci flag to bypass this, if you are sure.');
-  proc.exit(1);
-}
-
-const writeFile = (fp, content) => util.promisify(fs.writeFile)(fp, content);
-
-release(argv)
+getPkg(pkg.name)
+  .then(({ version }) => (version !== pkg.version ? version : false))
+  .catch((err) => {
+    console.debug(`Error getting package metadata from the registry: ${err}`);
+    console.debug("Don't worry, that is a check for latest cli version.");
+  })
+  .then((latestVersion) => {
+    if (latestVersion) {
+      console.log(`UPDATE AVAILABLE: v${latestVersion}`);
+      console.log(
+        'See:',
+        `https://github.com/${pkg.repository}/releases/tag/v${latestVersion}`,
+      );
+      console.log('');
+    }
+    if (argv.ci && !isCI) {
+      console.error('Publishing is only allowed on CI services!');
+      console.error(
+        'Try passing --no-ci flag to bypass this, if you are sure.',
+      );
+      proc.exit(1);
+    }
+  })
+  .then(() => release(argv))
   .then(async (result) => {
-    if (!result.nextVersion) {
-      console.log('Skipping NPM publish');
+    if (!result.increment && !result.nextVersion) {
+      console.log('Skipping `npm publish` stage...');
       return null;
     }
 
@@ -44,6 +61,7 @@ release(argv)
     }
 
     console.log(
+      'Meta Info:',
       JSON.stringify(
         result,
         (x, v) => (typeof v === 'function' ? '[Function]' : v),
@@ -64,7 +82,7 @@ release(argv)
       stdio: 'inherit',
     };
 
-    await writeFile(path.join(argv.cwd, '.npmrc'), content);
+    await util.promisify(fs.writeFile)(path.join(argv.cwd, '.npmrc'), content);
     await exec(`npm version ${result.nextVersion}`, opts);
     await exec(`npm publish --registry ${registry}`, opts);
 
