@@ -17,12 +17,11 @@
   "dependencies": {
     "@tunnckocore/execa": "^2.1.2",
     "dedent": "^0.7.0",
-    "detect-next-version": "^3.0.1",
+    "detect-next-version": "^3.1.0",
     "esm": "^3.0.84",
     "git-commits-since": "^2.0.0",
     "is-ci": "^1.2.1",
-    "mri": "^1.1.1",
-    "parse-commit-message": "^3.2.0"
+    "mri": "^1.1.1"
   },
   "devDependencies": {
     "@tunnckocore/config": "^1.0.2",
