@@ -35,14 +35,13 @@ export default function releaseCli(pkg, argv) {
     })
     .then(() => release(argv))
     .then(async (result) => {
-      if (!result.increment && !result.nextVersion) {
-        console.log('Skipping `npm publish` stage...');
-        return null;
-      }
-
       if (argv.dry) {
         console.log(JSON.stringify(result, null, 2));
         console.log(argv);
+        return null;
+      }
+      if (!result.increment && !result.nextVersion) {
+        console.log('Skipping `npm publish` stage...');
         return null;
       }
 
@@ -66,10 +65,10 @@ export default function releaseCli(pkg, argv) {
       const registry =
         argv.registry || proc.env.NPM_REGISTRY || defaultRegistry;
       const content = ded`//registry.npmjs.org/:_authToken=${token}
-    sign-git-tag=false
-    git-tag-version=false
-    allow-same-version=false
-    `;
+      sign-git-tag=false
+      git-tag-version=false
+      allow-same-version=false
+      `;
 
       const opts = {
         cwd: argv.cwd,
