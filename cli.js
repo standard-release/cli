@@ -35,8 +35,12 @@ release(argv)
       console.log('Skipping NPM publish');
       return null;
     }
-    if (!proc.env.NPM_TOKEN) {
-      throw new Error('Expect NPM_TOKEN environment variable to be set.');
+
+    const token = argv.token || proc.env.NPM_TOKEN;
+    if (!token) {
+      throw new Error(
+        'Expect --token to be passed or NPM_TOKEN environment variable to be set.',
+      );
     }
 
     console.log(
@@ -49,7 +53,7 @@ release(argv)
 
     const defaultRegistry = 'https://registry.npmjs.org/';
     const registry = argv.registry || proc.env.NPM_REGISTRY || defaultRegistry;
-    const content = ded`//registry.npmjs.org/:_authToken=${proc.env.NPM_TOKEN}
+    const content = ded`//registry.npmjs.org/:_authToken=${token}
     sign-git-tag=false
     git-tag-version=false
     allow-same-version=false

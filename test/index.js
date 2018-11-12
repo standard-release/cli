@@ -1,6 +1,12 @@
 import test from 'asia';
-import mod from '../src';
+import release from '../src';
 
-test('todo', (t) => {
-  t.strictEqual(typeof mod, 'function');
+test('basic', async (t) => {
+  t.strictEqual(typeof release, 'function');
+
+  try {
+    await release({ cwd: 'foo' });
+  } catch (err) {
+    t.ok(/Cannot find module/.test(err.message));
+  }
 });

@@ -1,11 +1,11 @@
 {
   "name": "@tunnckocore/release-cli",
-  "description": "Publish new project to NPM following Conventional Commits specification and SemVer. Uses [git-commits-since][] for detecting git commits since last SemVer tag and what next version should be.",
+  "description": "Publish new project to NPM following Conventional Commits specification and SemVer. Uses [git-commits-since][] for detecting git commits since last SemVer tag and [detect-next-version][] for what next version bump should be.",
   "license": "Apache-2.0",
   "licenseStart": "2018",
   "scripts": {
     "docs": "docks --outfile .verb.md && verb",
-    "lint": "eslint src test index.js cli.js --cache --fix --quiet --format codeframe",
+    "lint": "eslint '**/*.js' --cache --fix --quiet --format codeframe",
     "test": "nyc asia",
     "commit": "yarn lint && yarn test && yarn dry",
     "dry": "git add -A && git status --porcelain && gitcommit -sS",
@@ -17,17 +17,16 @@
   "dependencies": {
     "@tunnckocore/execa": "^2.1.2",
     "dedent": "^0.7.0",
+    "detect-next-version": "^3.0.1",
     "esm": "^3.0.84",
-    "git-commits-since": "^1.0.2",
+    "git-commits-since": "^2.0.0",
     "is-ci": "^1.2.1",
-    "mri": "^1.1.1"
+    "mri": "^1.1.1",
+    "parse-commit-message": "^3.2.0"
   },
   "devDependencies": {
-    "asia": "^0.19.7",
-    "docks": "^0.6.0",
-    "eslint": "^5.8.0",
-    "eslint-config-esmc": "^1.0.12",
-    "gitcommit": "^1.0.13"
+    "@tunnckocore/config": "^1.0.2",
+    "asia": "^0.19.7"
   },
   "files": [
     "src",
@@ -39,11 +38,10 @@
     "release-cli": "cli.js",
     "tunnckocore-release": "cli.js"
   },
-  "main": "index.js",
   "module": "src/index.js",
   "typings": "src/index.d.ts",
   "version": "0.0.0",
-  "repository": "tunnckoCoreLabs/release-cli",
+  "repository": "tunnckoCore/release-cli",
   "homepage": "https://github.com/tunnckoCore/release-cli",
   "author": "Charlike Mike Reagent (https://tunnckocore.com)",
   "publishConfig": {
@@ -67,14 +65,11 @@
     "related": {
       "list": [
         "asia",
-        "charlike",
         "docks",
-        "gitcommit",
+        "git-commits-since",
+        "detect-next-version",
         "@tunnckocore/execa",
-        "@tunnckocore/package-json",
         "@tunnckocore/create-project",
-        "@tunnckocore/update",
-        "@tunnckocore/config",
         "@tunnckocore/scripts"
       ]
     },
@@ -83,7 +78,8 @@
     },
     "reflinks": [
       "new-release",
-      "semantic-release"
+      "execa",
+      "git-commits-since"
     ]
   }
 }
