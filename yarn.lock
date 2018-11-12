@@ -1223,9 +1223,9 @@ get-value@^2.0.3, get-value@^2.0.6:
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
 
 git-commits-since@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/git-commits-since/-/git-commits-since-2.0.0.tgz#d1bf7e9441c5247c10f08e1baeb0d9ae5f882cc6"
-  integrity sha512-x3TM0itGIDAestYehxIVbFfRUMdNiSqvLvn2lYAfo65uo0qdK3E4R9PFKlA1Hq8L1brzicfR8CQUdaoA5RrpMA==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/git-commits-since/-/git-commits-since-2.0.2.tgz#dfbd912f76c4f0460a3a1f6af6956ffce68a5b82"
+  integrity sha512-yjdo5JNfQ/tFJewhR4HsMcMP2EACt6qjbMOue0qcO6N8R+d+cdk0SNvD56BVzDhkrcEycq42zg+celJli6RYKQ==
   dependencies:
     "@tunnckocore/git-semver-tags" "^0.2.0"
     esm "^3.0.84"
