@@ -77,8 +77,9 @@ Usage:
   release [flags]
 
 Flags:
-  --ci          to be called on CI or locally, default: true
-  --cwd         a directory where the package.json is, default: process.cwd()
+  --ci          to be called on CI or locally; default: true
+  --dry         dry run, won't publish; it will output metadata
+  --cwd         a directory where the package.json is; default: process.cwd()
   --token       a npm token to be used, or pass NPM_TOKEN env
   --registry    a npm registry to be published to, or pass NPM_REGISTRY env
 
