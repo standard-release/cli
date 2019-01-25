@@ -2,7 +2,6 @@ import fs from 'fs';
 import util from 'util';
 import path from 'path';
 import proc from 'process';
-import getPkg from '@tunnckocore/package-json';
 import { exec } from '@tunnckocore/execa';
 import isCI from 'is-ci';
 import ded from 'dedent';
@@ -10,21 +9,8 @@ import ded from 'dedent';
 import release from './index';
 
 export default function releaseCli(pkg, argv) {
-  return getPkg(pkg.name)
-    .then(({ version }) => (version !== pkg.version ? version : false))
-    .catch((err) => {
-      console.debug(`Error getting package metadata from the registry: ${err}`);
-      console.debug("Don't worry, that is a check for latest cli version.");
-    })
-    .then((latestVersion) => {
-      if (latestVersion) {
-        console.log(`UPDATE AVAILABLE: v${latestVersion}`);
-        console.log(
-          'See:',
-          `https://github.com/${pkg.repository}/releases/tag/v${latestVersion}`,
-        );
-        console.log('');
-      }
+  return release(argv)
+    .then(async (result) => {
       if (argv.ci && !isCI) {
         console.error('Publishing is only allowed on CI services!');
         console.error(
@@ -32,9 +18,6 @@ export default function releaseCli(pkg, argv) {
         );
         proc.exit(1);
       }
-    })
-    .then(() => release(argv))
-    .then(async (result) => {
       if (argv.dry) {
         console.log(JSON.stringify(result, null, 2));
         console.log(argv);
