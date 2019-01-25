@@ -1,5 +1,5 @@
 {
-  "name": "@tunnckocore/release-cli",
+  "name": "@standard-release/cli",
   "description": "Publish new project to NPM following Conventional Commits specification and SemVer. Uses [git-commits-since][] for detecting git commits since last SemVer tag and [detect-next-version][] for what next version bump should be.",
   "license": "Apache-2.0",
   "licenseStart": "2018",
@@ -45,8 +45,8 @@
   "module": "src/index.js",
   "typings": "src/index.d.ts",
   "version": "0.0.0",
-  "repository": "tunnckoCore/release-cli",
-  "homepage": "https://github.com/tunnckoCore/release-cli",
+  "repository": "standard-release/cli",
+  "homepage": "https://github.com/standard-release/cli",
   "author": "Charlike Mike Reagent (https://tunnckocore.com)",
   "publishConfig": {
     "access": "public",
