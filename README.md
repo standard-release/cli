@@ -2,7 +2,7 @@
 
 > Publish new project to NPM following Conventional Commits specification and SemVer. Uses [git-commits-since][] for detecting git commits since last SemVer tag and [detect-next-version][] for what next version bump should be.
 
-Please consider following this project's author, [<%= author.name %>](https://github.com/<%= author.login %>), and :star: the project to show your :heart: and support.
+Please consider following this project's author, [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project to show your :heart: and support.
 
 <div id="thetop"></div>
 
@@ -16,7 +16,7 @@ Please consider following this project's author, [<%= author.name %>](https://gi
 
 If you have any _how-to_ kind of questions, please read the [Contributing Guide](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) documents.  
 For bugs reports and feature requests, [please create an issue][open-issue-url] or ping
-[@tunnckoCore](https://twitter.com/<%= author.twitter %>) at Twitter.
+[@tunnckoCore](https://twitter.com/tunnckoCore) at Twitter.
 
 [![Become a Patron][patreon-img]][patreon-url]
 [![Conventional Commits][ccommits-img]][ccommits-url]
@@ -30,7 +30,7 @@ Project is [semantically](https://semver.org) versioned & automatically released
 <!-- Logo when needed:
 
 <p align="center">
-  <a href="https://github.com/<%= repository %>">
+  <a href="https://github.com/standard-release/cli">
     <img src="./media/logo.png" width="85%">
   </a>
 </p>
@@ -59,7 +59,7 @@ This project requires [**Node.js**](https://nodejs.org) **^8.10.0 || >=10.13.0**
 _We highly recommend to use Yarn when you think to contribute to this project._
 
 ```bash
-$ yarn add @standard-release/cli
+$ yarn global add @standard-release/cli
 ```
 
 ## CLI
@@ -72,7 +72,7 @@ the `--no-ci` flag, otherwise it will exit the program.
 
 ```
 Usage:
-  release [flags]
+  stanard-release [flags]
 
 Flags:
   --ci          to be called on CI or locally; default: true
@@ -144,7 +144,7 @@ here](https://github.com/jfmengels/all-contributors-cli#usage).
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="<%= author.avatar %>" width="120px;"/><br /><sub><b><%= author.name %></b></sub>](<%= author.url %>)<br />[💻](https://github.com/<%= repository %>/commits?author=<%= author.login %> "Code") [📖](https://github.com/<%= repository %>/commits?author=<%= author.login %> "Documentation") [💬](#question-<%= author.login %> "Answering Questions") [👀](#review-<%= author.login %> "Reviewed Pull Requests") [🔍](#fundingFinding-<%= author.login %> "Funding Finding") |
+| [<img src="https://avatars3.githubusercontent.com/u/5038030?v=4" width="120px;"/><br /><sub><b>Charlike Mike Reagent</b></sub>](https://tunnckocore.com)<br />[💻](https://github.com/standard-release/cli/commits?author=tunnckoCore "Code") [📖](https://github.com/standard-release/cli/commits?author=tunnckoCore "Documentation") [💬](#question-tunnckoCore "Answering Questions") [👀](#review-tunnckoCore "Reviewed Pull Requests") [🔍](#fundingFinding-tunnckoCore "Funding Finding") |
 | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
@@ -153,34 +153,30 @@ Consider showing your [support](#support-the-project) to them. :sparkling_heart:
 
 ## License
 
-Copyright (c) <%= license.year %>-present, [<%= author.name %>](<%= author.url %>) `<<%= author.email %>>` & [contributors](#wonderful-contributors).  
-Released under the [<%= license.name %> License][license-url].
+Copyright (c) 2018-present, [Charlike Mike Reagent](https://tunnckocore.com) `<mameto2011@gmail.com>` & [contributors](#wonderful-contributors).  
+Released under the [Apache-2.0 License][license-url].
 
 <!-- Heading badges -->
 
 [npmv-url]: https://www.npmjs.com/package/@standard-release/cli
 [npmv-img]: https://badgen.net/npm/v/@standard-release/cli?icon=npm
 
-[ghrelease-url]: https://github.com/<%= repository %>/releases/latest
-[ghrelease-img]: https://badgen.net/github/release/<%= repository %>?icon=github
+[ghrelease-url]: https://github.com/standard-release/cli/releases/latest
+[ghrelease-img]: https://badgen.net/github/release/standard-release/cli?icon=github
+[license-url]: https://github.com/standard-release/cli/blob/master/LICENSE
 
-[license-url]: https://github.com/<%= repository %>/blob/master/LICENSE
 [license-img]: https://badgen.net/npm/license/@standard-release/cli
 
 <!-- Front line badges -->
 
 [codestyle-url]: https://github.com/airbnb/javascript
 [codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb
-
-[linuxbuild-url]: https://circleci.com/gh/<%= repository %>/tree/master
-[linuxbuild-img]: https://badgen.net/circleci/github/<%= repository %>/master?label=build&icon=circleci
-
-[codecoverage-url]: https://codecov.io/gh/<%= repository %>
-[codecoverage-img]: https://badgen.net/codecov/c/github/<%= repository %>?icon=codecov
-
-[dependencies-url]: https://david-dm.org/<%= repository %>
-[dependencies-img]: https://badgen.net/david/dep/<%= repository %>?label=deps
-
+[linuxbuild-url]: https://circleci.com/gh/standard-release/cli/tree/master
+[linuxbuild-img]: https://badgen.net/circleci/github/standard-release/cli/master?label=build&icon=circleci
+[codecoverage-url]: https://codecov.io/gh/standard-release/cli
+[codecoverage-img]: https://badgen.net/codecov/c/github/standard-release/cli?icon=codecov
+[dependencies-url]: https://david-dm.org/standard-release/cli
+[dependencies-img]: https://badgen.net/david/dep/standard-release/cli?label=deps
 [ccommits-url]: https://conventionalcommits.org/
 [ccommits-img]: https://badgen.net/badge/conventional%20commits/v1.0.0/dfb317
 [standard-release-url]: https://github.com/standard-release/standard-release
@@ -196,19 +192,14 @@ Released under the [<%= license.name %> License][license-url].
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green
 [prs-welcome-img]: https://badgen.net/badge/PRs/welcome/green
 [prs-welcome-url]: http://makeapullrequest.com
-
-[paypal-donate-url]: https://paypal.me/<%= author.login %>/10
+[paypal-donate-url]: https://paypal.me/tunnckoCore/10
 [paypal-donate-img]: https://badgen.net/badge/$/support/purple
-
 [patreon-url]: https://www.patreon.com/bePatron?u=5579781
-
-[patreon-img]: https://badgen.net/badge/patreon/<%= author.login %>/F96854?icon=patreon
+[patreon-img]: https://badgen.net/badge/patreon/tunnckoCore/F96854?icon=patreon
 [patreon-sponsor-img]: https://badgen.net/badge/become/a%20sponsor/F96854?icon=patreon
-
-[shareu]: https://twitter.com/intent/tweet?text=https://github.com/<%= repository %>&via=<%= author.twitter %>
+[shareu]: https://twitter.com/intent/tweet?text=https://github.com/standard-release/cli&via=tunnckoCore
 [shareb]: https://badgen.net/badge/twitter/share/1da1f2?icon=twitter
-
-[open-issue-url]: https://github.com/<%= repository %>/issues/new
+[open-issue-url]: https://github.com/standard-release/cli/issues/new
 
 [detect-next-version]: https://github.com/tunnckoCoreLabs/detect-next-version
 [execa]: https://github.com/sindresorhus/execa
