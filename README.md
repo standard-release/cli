@@ -59,7 +59,7 @@ This project requires [**Node.js**](https://nodejs.org) **^8.10.0 || >=10.13.0**
 _We highly recommend to use Yarn when you think to contribute to this project._
 
 ```bash
-$ yarn global add @standard-release/cli
+$ yarn add @standard-release/cli
 ```
 
 ## CLI
