@@ -58,7 +58,7 @@ test('should detect new commits', async (t) => {
   const result = await release({ cwd: fakePkg });
 
   t.strictEqual(result.increment, 'major');
-  t.strictEqual(result.lastVersion, '1.0.0');
+  t.strictEqual(result.lastVersion, '1.1.0');
   t.strictEqual(result.nextVersion, '2.0.0');
   fs.remove(fakePkg);
 });

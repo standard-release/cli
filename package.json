@@ -6,7 +6,7 @@
   "scripts": {
     "docs": "docks --outfile .verb.md && verb",
     "lint": "eslint '**/*.js' --cache --fix --quiet --format codeframe",
-    "test-only": "asia -r esm",
+    "test-only": "asia -r esm --reporter codeframe",
     "test": "nyc asia",
     "precommit": "yarn run lint && yarn run test-only",
     "commit": "yarn dry",
