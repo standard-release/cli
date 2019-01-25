@@ -1,4 +1,4 @@
-# @tunnckocore/release-cli [![npm version][npmv-img]][npmv-url] [![github release][ghrelease-img]][ghrelease-url] [![License][license-img]][license-url]
+# @standard-release/cli [![npm version][npmv-img]][npmv-url] [![github release][ghrelease-img]][ghrelease-url] [![License][license-img]][license-url]
 
 > Publish new project to NPM following Conventional Commits specification and SemVer. Uses [git-commits-since][] for detecting git commits since last SemVer tag and [detect-next-version][] for what next version bump should be.
 
@@ -59,14 +59,14 @@ This project requires [**Node.js**](https://nodejs.org) **^8.10.0 || >=10.13.0**
 _We highly recommend to use Yarn when you think to contribute to this project._
 
 ```bash
-$ yarn global add @tunnckocore/release-cli
+$ yarn global add @standard-release/cli
 # or
-$ yarn add --dev @tunnckocore/release-cli
+$ yarn add --dev @standard-release/cli
 ```
 
 ## CLI
 
-Just run `release` or `tunnckocore-release` and watch.
+Just run `standard-release` and that's it!
 It will detect next needed bump for your package and execute `npm version` and `npm publish`.
 
 Make note that it is meant to be used in CI services, but if you want to run it locally pass
@@ -118,7 +118,7 @@ For bugs reports and feature requests, [please create an issue][open-issue-url] 
 
 ### Support the project
 
-[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/@tunnckocore/release-cli) sites too! :rocket:
+[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/@standard-release/cli) sites too! :rocket:
 
 Not financial support? Okey! [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request), stars and all kind of [contributions](https://opensource.guide/how-to-contribute/#what-it-means-to-contribute) are always
 welcome. :sparkles:
@@ -158,37 +158,33 @@ Released under the [Apache-2.0 License][license-url].
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/@tunnckocore/release-cli
-[npmv-img]: https://badgen.net/npm/v/@tunnckocore/release-cli?icon=npm
+[npmv-url]: https://www.npmjs.com/package/@standard-release/cli
+[npmv-img]: https://badgen.net/npm/v/@standard-release/cli?icon=npm
 
 [ghrelease-url]: https://github.com/tunnckoCore/release-cli/releases/latest
 [ghrelease-img]: https://badgen.net/github/release/tunnckoCore/release-cli?icon=github
-
 [license-url]: https://github.com/tunnckoCore/release-cli/blob/master/LICENSE
-[license-img]: https://badgen.net/npm/license/@tunnckocore/release-cli
+
+[license-img]: https://badgen.net/npm/license/@standard-release/cli
 
 <!-- Front line badges -->
 
 [codestyle-url]: https://github.com/airbnb/javascript
 [codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb
-
 [linuxbuild-url]: https://circleci.com/gh/tunnckoCore/release-cli/tree/master
 [linuxbuild-img]: https://badgen.net/circleci/github/tunnckoCore/release-cli/master?label=build&icon=circleci
-
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/release-cli
 [codecoverage-img]: https://badgen.net/codecov/c/github/tunnckoCore/release-cli?icon=codecov
-
 [dependencies-url]: https://david-dm.org/tunnckoCore/release-cli
 [dependencies-img]: https://badgen.net/david/dep/tunnckoCore/release-cli?label=deps
-
 [ccommits-url]: https://conventionalcommits.org/
 [ccommits-img]: https://badgen.net/badge/conventional%20commits/v1.0.0/dfb317
 [new-release-url]: https://ghub.io/new-release
 [new-release-img]: https://badgen.net/badge/semantically/released/05c5ff
 
-[downloads-weekly-img]: https://badgen.net/npm/dw/@tunnckocore/release-cli
-[downloads-monthly-img]: https://badgen.net/npm/dm/@tunnckocore/release-cli
-[downloads-total-img]: https://badgen.net/npm/dt/@tunnckocore/release-cli
+[downloads-weekly-img]: https://badgen.net/npm/dw/@standard-release/cli
+[downloads-monthly-img]: https://badgen.net/npm/dm/@standard-release/cli
+[downloads-total-img]: https://badgen.net/npm/dt/@standard-release/cli
 
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green
@@ -199,7 +195,6 @@ Released under the [Apache-2.0 License][license-url].
 [patreon-url]: https://www.patreon.com/bePatron?u=5579781
 [patreon-img]: https://badgen.net/badge/patreon/tunnckoCore/F96854?icon=patreon
 [patreon-sponsor-img]: https://badgen.net/badge/become/a%20sponsor/F96854?icon=patreon
-
 [shareu]: https://twitter.com/intent/tweet?text=https://github.com/tunnckoCore/release-cli&via=tunnckoCore
 [shareb]: https://badgen.net/badge/twitter/share/1da1f2?icon=twitter
 [open-issue-url]: https://github.com/tunnckoCore/release-cli/issues/new
@@ -207,4 +202,4 @@ Released under the [Apache-2.0 License][license-url].
 [detect-next-version]: https://github.com/tunnckoCoreLabs/detect-next-version
 [execa]: https://github.com/sindresorhus/execa
 [git-commits-since]: https://github.com/tunnckoCoreLabs/git-commits-since
-[new-release]: https://github.com/tunnckoCore/new-release
+[new-release]: https://github.com/tunnckoCoreLabs/new-release

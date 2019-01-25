@@ -37,9 +37,7 @@
     "cli.js"
   ],
   "bin": {
-    "release": "cli.js",
-    "release-cli": "cli.js",
-    "tunnckocore-release": "cli.js"
+    "standard-release": "cli.js"
   },
   "module": "src/index.js",
   "typings": "src/index.d.ts",
