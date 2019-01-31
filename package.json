@@ -46,7 +46,7 @@
   "main": "index.js",
   "module": "src/index.js",
   "typings": "src/index.d.ts",
-  "version": "3.0.0",
+  "version": "0.0.0-semantically-released",
   "repository": "standard-release/cli",
   "homepage": "https://github.com/standard-release/cli",
   "author": "Charlike Mike Reagent (https://tunnckocore.com)",

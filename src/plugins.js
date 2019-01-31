@@ -90,6 +90,7 @@ function normalizeConfig(options, env, publishConfig) {
   let registry =
     opts.registry || envs.NPM_REGISTRY || cfg.registry || npmrc.config_registry;
 
+  // always use the npm registry if not other given
   registry = registry.includes('registry.yarnpkg.com')
     ? 'registry.npmjs.org'
     : registry;
