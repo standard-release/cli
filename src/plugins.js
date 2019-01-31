@@ -44,13 +44,11 @@ export async function npm(options, env, results) {
 
     console.log(result.name, result.lastVersion, '==>', result.nextVersion);
 
-    if (!opts.dryRun) {
-      await exec(`npm version ${result.nextVersion}`, execOpts);
-    }
-
     if (opts.dryRun) {
       return;
     }
+
+    await exec(`npm version ${result.nextVersion}`, execOpts);
 
     const publishCmd = [
       'npm publish',
