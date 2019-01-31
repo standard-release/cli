@@ -42,9 +42,9 @@ export async function npm(options, env, results) {
       console.log('Package Folder', pkgFolder);
     }
 
-    if (opts.dryRun) {
-      console.log(result.name, result.lastVersion, '==>', result.nextVersion);
-    } else {
+    console.log(result.name, result.lastVersion, '==>', result.nextVersion);
+
+    if (!opts.dryRun) {
       await exec(`npm version ${result.nextVersion}`, execOpts);
     }
 
