@@ -22,13 +22,12 @@
   },
   "dependencies": {
     "@tunnckocore/execa": "^2.2.1",
-    "dedent": "^0.7.0",
     "detect-next-version": "^4.0.0",
     "esm": "^3.2.0",
     "git-commits-since": "^2.0.4",
     "is-ci": "^2.0.0",
     "mri": "^1.1.4",
-    "registry-url": "^4.0.0"
+    "rc": "^1.2.8"
   },
   "devDependencies": {
     "@tunnckocore/config": "^1.0.3",
@@ -47,7 +46,7 @@
   "main": "index.js",
   "module": "src/index.js",
   "typings": "src/index.d.ts",
-  "version": "0.0.0",
+  "version": "3.0.0",
   "repository": "standard-release/cli",
   "homepage": "https://github.com/standard-release/cli",
   "author": "Charlike Mike Reagent (https://tunnckocore.com)",

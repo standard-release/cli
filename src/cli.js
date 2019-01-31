@@ -14,6 +14,7 @@ export default function releaseCli(argv, env) {
           'Try passing --no-ci flag to bypass this, if you are sure.',
         );
         proc.exit(1);
+        return null;
       }
       if (argv.verbose) {
         console.log('Meta info:', serialize(results));

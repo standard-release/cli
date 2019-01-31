@@ -23,6 +23,13 @@ const argv = parser(proc.argv.slice(2), {
   default: {
     cwd: proc.cwd(),
     ci: true,
+    'sign-git-tag': false,
+    'git-tag-version': false,
+  },
+  alias: {
+    'dry-run': ['dryRun', 'dry'],
+    'sign-git-tag': ['signGitTag'],
+    'git-tag-version': ['gitTagVersion'],
   },
 });
 

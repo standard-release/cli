@@ -8,7 +8,7 @@ export default async function release(options) {
 
   // TODO: in next minor
   if (opts.monorepo) {
-    return {};
+    return [];
   }
 
   const { default: pkg } = await import(path.join(opts.cwd, 'package.json'));
