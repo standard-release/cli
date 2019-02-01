@@ -6,7 +6,7 @@ import detector from 'detect-next-version';
 export default async function release(options) {
   const opts = Object.assign({ cwd: proc.cwd() }, options);
 
-  // TODO: in next minor
+  // TODO: in next major
   if (opts.monorepo) {
     return [];
   }
