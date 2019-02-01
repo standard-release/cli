@@ -7,8 +7,11 @@ import simpleGit from 'simple-git/promise';
 import release from '../src';
 import { __dirname } from './cjs-globals';
 
-const FAKE_MONO = path.join(__dirname, 'some-monorepo');
-const FAKE_PKG = path.join(__dirname, 'kokoko3');
+const FAKE_MONO = path.join(__dirname, 'some-mono-repo');
+const FAKE_PKG = path.join(__dirname, 'kokokokokokokok');
+
+fs.removeSync(FAKE_MONO);
+fs.removeSync(FAKE_PKG);
 
 async function gitSetup(dir, initial) {
   const git = simpleGit(dir);
@@ -26,7 +29,7 @@ async function gitSetup(dir, initial) {
     gpgsign = false`;
 
   await fs.outputFile(path.join(dir, '.git', 'config'), localGitConfig);
-  await fs.outputFile(path.join(dir, 'readme.md'), '# monorepo root');
+  await fs.outputFile(path.join(dir, 'readme.md'), '# pkg readme');
 
   if (initial) {
     await git.add('./*');
