@@ -6,6 +6,5 @@
   "cache": true,
   "check-coverage": true,
   "reporter": ["lcov", "text"],
-  "include": ["src/**/*.js"],
   "exclude": ["tests"]
 }

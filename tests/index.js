@@ -1,4 +1,5 @@
 import path from 'path';
+import assert from 'assert';
 import test from 'asia';
 import fs from 'fs-extra';
 import dedent from 'dedent';
@@ -41,24 +42,26 @@ async function gitSetup(dir, initial) {
 
 async function createFile(pkg, filename, content) {
   const rand = Math.floor(Math.random());
-  await fs.outputJson(path.join(pkg, filename || rand), content || { rand });
+  const filepath = path.join(pkg, filename || String(rand));
+
+  await fs.outputJson(filepath, content || { rand });
 }
 
-test('basic', async (t) => {
-  t.strictEqual(typeof release, 'function');
+test('basic', async () => {
+  assert.strictEqual(typeof release, 'function');
 
   try {
     await release({ cwd: 'foo' });
   } catch (err) {
-    t.ok(/Cannot find module/.test(err.message));
+    assert.ok(/Cannot find module/.test(err.message));
   }
 });
 
-test('should detect new commits', async (t) => {
+test('should detect new commits', async () => {
   await fs.remove(FAKE_PKG);
   await fs.ensureDir(FAKE_PKG);
 
-  await fs.createFile(FAKE_PKG, 'package.json', {
+  await createFile(FAKE_PKG, 'package.json', {
     name: '@tunnckocore/kokoko3',
   });
 
@@ -78,9 +81,9 @@ test('should detect new commits', async (t) => {
 
   const [result] = await release({ cwd: FAKE_PKG });
 
-  t.strictEqual(result.increment, 'major');
-  t.strictEqual(result.lastVersion, '1.1.0');
-  t.strictEqual(result.nextVersion, '2.0.0');
+  assert.strictEqual(result.increment, 'major');
+  assert.strictEqual(result.lastVersion, '1.1.0');
+  assert.strictEqual(result.nextVersion, '2.0.0');
   fs.remove(FAKE_PKG);
 });
 
