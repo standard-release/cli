@@ -34,6 +34,7 @@
     "@tunnckocore/config": "^1.0.3",
     "asia": "^1.0.0-rc.31",
     "dedent": "^0.7.0",
+    "docks": "^0.7.0",
     "fs-extra": "^7.0.1",
     "simple-git": "^1.107.0"
   },

@@ -688,6 +688,18 @@ docks@^0.6.0:
     mkdirp "^0.5.1"
     mri "^1.1.1"
 
+docks@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/docks/-/docks-0.7.0.tgz#7ff692cc6c4f8d5e53e00ef1c809643a61ab29ca"
+  integrity sha512-I9cb1g+sQMF13BlMK2gu2lLyjMB88eFdPKqYRQ3BAKirz2Dd/wVAKE1vitjJCFNVSyV7atzdp4bKuLsrTpL/Hg==
+  dependencies:
+    "@babel/parser" "^7.1.3"
+    doctrine "^3.0.0"
+    esm "^3.2.0"
+    fast-glob "^2.2.2"
+    mkdirp "^0.5.1"
+    mri "^1.1.1"
+
 doctrine@1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
