@@ -7,6 +7,9 @@ import simpleGit from 'simple-git/promise';
 import release from '../src';
 import { __dirname } from './cjs-globals';
 
+const FAKE_MONO = path.join(__dirname, 'some-monorepo');
+const FAKE_PKG = path.join(__dirname, 'kokoko3');
+
 async function gitSetup(dir, initial) {
   const git = simpleGit(dir);
   await git.init();
@@ -49,56 +52,52 @@ test('basic', async (t) => {
 });
 
 test('should detect new commits', async (t) => {
-  const fakePkg = path.join(__dirname, 'fakepkg');
+  await fs.remove(FAKE_PKG);
+  await fs.ensureDir(FAKE_PKG);
 
-  await fs.remove(fakePkg);
-  await fs.ensureDir(fakePkg);
-
-  await fs.createFile(fakePkg, 'package.json', {
+  await fs.createFile(FAKE_PKG, 'package.json', {
     name: '@tunnckocore/kokoko3',
   });
 
-  const git = await gitSetup(fakePkg);
+  const git = await gitSetup(FAKE_PKG);
 
   await git.add('./*');
   await git.commit('feat: initial blank release');
   await git.addTag('v1.1.0');
 
-  await createFile(fakePkg);
+  await createFile(FAKE_PKG);
   await git.add('./*');
   await git.commit('major(release): qxu quack');
 
-  await createFile(fakePkg);
+  await createFile(FAKE_PKG);
   await git.add('./*');
   await git.commit('fix: fo222222o bar baz');
 
-  const [result] = await release({ cwd: fakePkg });
+  const [result] = await release({ cwd: FAKE_PKG });
 
   t.strictEqual(result.increment, 'major');
   t.strictEqual(result.lastVersion, '1.1.0');
   t.strictEqual(result.nextVersion, '2.0.0');
-  fs.remove(fakePkg);
+  fs.remove(FAKE_PKG);
 });
 
 /* eslint-disable max-statements */
 test('should work for monorepo setups', async () => {
-  const fakeMonorepo = path.join(__dirname, 'fake-monorepo');
-
   // the `foo-bar-baz-qux` package
-  const fakePkgOne = path.join(fakeMonorepo, 'packages', 'foo-bar-baz-qux');
+  const FAKE_1 = path.join(FAKE_MONO, 'packages', 'foo-bar-baz-qux');
 
   // the `@tunnckocore/qq5` package
-  const fakePkgTwo = path.join(fakeMonorepo, '@tunnckocore', 'qq5');
+  const FAKE_2 = path.join(FAKE_MONO, '@tunnckocore', 'qq5');
 
   // the `@tunnckocore/kokoko3` package
-  const fakePkgTree = path.join(fakeMonorepo, '@tunnckocore', 'kokoko3');
+  const FAKE_3 = path.join(FAKE_MONO, '@tunnckocore', 'kokoko3');
 
-  await fs.remove(fakeMonorepo);
-  await fs.ensureDir(fakeMonorepo);
+  await fs.remove(FAKE_MONO);
+  await fs.ensureDir(FAKE_MONO);
 
-  const git = await gitSetup(fakeMonorepo, true);
+  const git = await gitSetup(FAKE_MONO, true);
 
-  await createFile(fakeMonorepo, 'package.json', {
+  await createFile(FAKE_MONO, 'package.json', {
     private: true,
     name: 'some-monorepo-root',
   });
@@ -107,7 +106,7 @@ test('should work for monorepo setups', async () => {
    * add `foo-bar-baz-qux`
    */
   let name = 'foo-bar-baz-qux';
-  await createFile(fakePkgOne, 'package.json', { name });
+  await createFile(FAKE_1, 'package.json', { name });
 
   await git.add('./*');
   await git.commit(`chore: add \`${name}\` package`);
@@ -117,7 +116,7 @@ test('should work for monorepo setups', async () => {
    * add `@tunnckocore/qq5`
    */
   name = '@tunnckocore/qq5';
-  await createFile(fakePkgTwo, 'package.json', { name });
+  await createFile(FAKE_2, 'package.json', { name });
 
   await git.add('./*');
   await git.commit(`chore: add \`${name}\` package`);
@@ -127,7 +126,7 @@ test('should work for monorepo setups', async () => {
    * add `@tunnckocore/kokoko3`
    */
   name = '@tunnckocore/kokoko3';
-  await createFile(fakePkgTree, 'package.json', { name });
+  await createFile(FAKE_3, 'package.json', { name });
 
   await git.add('./*');
   await git.commit(`chore: add \`${name}\` package`);
@@ -139,7 +138,7 @@ test('should work for monorepo setups', async () => {
    * TODO: when implemented
    */
 
-  // await createFile(fakePkgOne, 'some-new-file');
+  // await createFile(FAKE_1, 'some-new-file');
   // await createFile(fakePkgTwo, 'yeah-new-new');
 
   /**
@@ -147,11 +146,11 @@ test('should work for monorepo setups', async () => {
    *
    * TODO: when implemented
    */
-  const results = await release({ cwd: fakeMonorepo, monorepo: true });
+  const results = await release({ cwd: FAKE_MONO, monorepo: true });
   console.log(results);
 
   /**
    * Cleanup the whole monorepo
    */
-  fs.remove(fakeMonorepo);
+  fs.remove(FAKE_MONO);
 });
