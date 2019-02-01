@@ -1,3 +1,4 @@
+import assert from 'assert';
 import path from 'path';
 import test from 'asia';
 import fs from 'fs-extra';
@@ -7,17 +8,17 @@ import simpleGit from 'simple-git/promise';
 import release from '../src';
 import { __dirname } from './cjs-globals';
 
-test('basic', async (t) => {
-  t.strictEqual(typeof release, 'function');
+test('basic', async () => {
+  assert.strictEqual(typeof release, 'function');
 
   try {
     await release({ cwd: 'foo' });
   } catch (err) {
-    t.ok(/Cannot find module/.test(err.message));
+    assert.ok(/Cannot find module/.test(err.message));
   }
 });
 
-test('should detect new commits', async (t) => {
+test('should detect new commits', async () => {
   const fakePkg = path.join(__dirname, 'fakepkg');
 
   await fs.remove(fakePkg);
@@ -55,10 +56,10 @@ test('should detect new commits', async (t) => {
   await git.add('./*');
   await git.commit('fix: fo222222o bar baz');
 
-  const result = await release({ cwd: fakePkg });
+  const [result] = await release({ cwd: fakePkg });
 
-  t.strictEqual(result.increment, 'major');
-  t.strictEqual(result.lastVersion, '1.1.0');
-  t.strictEqual(result.nextVersion, '2.0.0');
+  assert.strictEqual(result.increment, 'major');
+  assert.strictEqual(result.lastVersion, '1.1.0');
+  assert.strictEqual(result.nextVersion, '2.0.0');
   fs.remove(fakePkg);
 });
