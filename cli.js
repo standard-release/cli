@@ -7,8 +7,6 @@ const proc = require('process');
 const parser = require('mri');
 const esmLoader = require('esm');
 
-const pkg = require('./package');
-
 const esmRequire = esmLoader(module);
 
 function interop(x) {
@@ -28,4 +26,4 @@ const argv = parser(proc.argv.slice(2), {
   },
 });
 
-cli(pkg, argv).catch(console.error);
+cli(argv).catch(console.error);

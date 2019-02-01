@@ -8,9 +8,12 @@ import ded from 'dedent';
 
 import release from './index';
 
-export default function releaseCli(pkg, argv) {
+export default function releaseCli(argv) {
   return release(argv)
-    .then(async (result) => {
+    .then(async (results) => {
+      // ? temporary
+      const [result] = results;
+
       if (argv.ci && !isCI) {
         console.error('Publishing is only allowed on CI services!');
         console.error(
@@ -19,7 +22,7 @@ export default function releaseCli(pkg, argv) {
         proc.exit(1);
       }
       if (argv.dry) {
-        console.log(JSON.stringify(result, null, 2));
+        console.log(serialize(result));
         console.log(argv);
         return null;
       }
@@ -35,14 +38,7 @@ export default function releaseCli(pkg, argv) {
         );
       }
 
-      console.log(
-        'Meta Info:',
-        JSON.stringify(
-          result,
-          (x, v) => (typeof v === 'function' ? '[Function]' : v),
-          2,
-        ),
-      );
+      console.log('Meta Info:', serialize(result));
 
       const defaultRegistry = 'https://registry.npmjs.org/';
       const registry =
@@ -62,6 +58,7 @@ export default function releaseCli(pkg, argv) {
         path.join(argv.cwd, '.npmrc'),
         content,
       );
+
       await exec(`npm version ${result.nextVersion}`, opts);
       await exec(`npm publish --registry ${registry}`, opts);
 
@@ -72,4 +69,12 @@ export default function releaseCli(pkg, argv) {
       console.error(err.stack);
       proc.exit(1);
     });
+}
+
+function serialize(val) {
+  return JSON.stringify(
+    val,
+    (x, v) => (typeof v === 'function' ? '[Function]' : v),
+    2,
+  );
 }
