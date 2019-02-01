@@ -19,7 +19,9 @@ export default async function release(options) {
   const { rawCommits } = await gitCommitsSince(opt);
 
   if (rawCommits.length === 0) {
-    throw new Error('No commits since last tag.');
+    console.log('No (new) commits since last(est) tag');
+    proc.exit(0);
+    return null;
   }
 
   return detector(rawCommits, Object.assign({}, opt, { name: pkg.name }));
