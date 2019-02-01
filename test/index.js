@@ -67,7 +67,7 @@ test('should detect new commits', async (t) => {
   await git.commit('fix: fo222222o bar baz');
 
   const result = await release({ cwd: fakePkg });
-
+  console.log(result);
   t.strictEqual(result.increment, 'major');
   t.strictEqual(result.lastVersion, '1.1.0');
   t.strictEqual(result.nextVersion, '2.0.0');
