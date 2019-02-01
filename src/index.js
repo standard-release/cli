@@ -22,11 +22,5 @@ export default async function release(options) {
     throw new Error('No commits since last tag.');
   }
 
-  const endpoint = (name, tag) =>
-    `https://cdn.jsdelivr.net/npm/${name}@${tag}/package.json`;
-
-  return detector(
-    rawCommits,
-    Object.assign({}, opt, { name: pkg.name, endpoint }),
-  );
+  return detector(rawCommits, Object.assign({}, opt, { name: pkg.name }));
 }
