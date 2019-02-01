@@ -53,6 +53,7 @@ test('should detect new commits', async (t) => {
 
   await fs.remove(fakePkg);
   await fs.ensureDir(fakePkg);
+
   await fs.createFile(fakePkg, 'package.json', {
     name: '@tunnckocore/kokoko3',
   });
@@ -92,7 +93,9 @@ test('should work for monorepo setups', async () => {
   // the `@tunnckocore/kokoko3` package
   const fakePkgTree = path.join(fakeMonorepo, '@tunnckocore', 'kokoko3');
 
+  await fs.remove(fakeMonorepo);
   await fs.ensureDir(fakeMonorepo);
+
   const git = await gitSetup(fakeMonorepo, true);
 
   await createFile(fakeMonorepo, 'package.json', {
