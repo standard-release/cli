@@ -103,15 +103,15 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@std/esm@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.20.0.tgz#658cb32e3b163f20b7d9f29a78987041068b1182"
-  integrity sha512-05cQYa1T/6XxKhhnyIKQC8kSBHYkXWueZ0XFLABLlghoymwgyp4XT9ivjDrHb7EbSWbQoHSRk34zhIuPeShJow==
-
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
+
+"@std/esm@^0.20.0":
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.20.0.tgz#658cb32e3b163f20b7d9f29a78987041068b1182"
+  integrity sha512-05cQYa1T/6XxKhhnyIKQC8kSBHYkXWueZ0XFLABLlghoymwgyp4XT9ivjDrHb7EbSWbQoHSRk34zhIuPeShJow==
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
@@ -160,15 +160,6 @@
     "@tunnckocore/execa" "^2.1.2"
     esm "^3.0.84"
     semver "^5.6.0"
-
-"@tunnckocore/package-json@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/package-json/-/package-json-1.0.3.tgz#93fccf6d504f38d5c0db581607a0402de06c5d41"
-  integrity sha512-BSpZbuoHtnpuBhZV1cWZSD6G7BKc6l3ogw1mJTyviOsck5iGxbDtplmV6OA3vwpYJcJ5tOOWARiy7A+4aW88LA==
-  dependencies:
-    axios "^0.18.0"
-    esm "^3.0.84"
-    parse-package-name "^0.1.0"
 
 "@tunnckocore/pretty-config@^0.5.1":
   version "0.5.1"
@@ -2445,7 +2436,7 @@ quick-lru@^1.0.0:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
   integrity sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
 
-rc@^1.2.8:
+rc@^1.1.6, rc@^1.2.7, rc@^1.2.8:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
   integrity sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==
