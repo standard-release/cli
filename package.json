@@ -6,8 +6,8 @@
   "scripts": {
     "docs": "docks --outfile .verb.md && verb",
     "lint": "eslint '**/*.js' --cache --fix --quiet --format codeframe",
-    "test-only": "asia -r esm --reporter codeframe",
-    "test": "nyc asia",
+    "test-only": "node -r esm test/index.js",
+    "test": "nyc --require esm node test/index.js",
     "precommit": "yarn run lint && yarn run test-only",
     "commit": "yarn dry",
     "dry": "git add -A && git status --porcelain && gitcommit",
@@ -16,18 +16,21 @@
   "engines": {
     "node": "^8.10.0 || >=10.13.0"
   },
+  "resolutions": {
+    "esm": "^3.2.0"
+  },
   "dependencies": {
-    "@tunnckocore/execa": "^2.1.2",
+    "@tunnckocore/execa": "^2.2.1",
     "dedent": "^0.7.0",
-    "detect-next-version": "^3.1.0",
-    "esm": "^3.0.84",
-    "git-commits-since": "^2.0.0",
-    "is-ci": "^1.2.1",
-    "mri": "^1.1.1"
+    "detect-next-version": "^4.0.0",
+    "esm": "^3.2.0",
+    "git-commits-since": "^2.0.4",
+    "is-ci": "^2.0.0",
+    "mri": "^1.1.4"
   },
   "devDependencies": {
-    "@tunnckocore/config": "^1.0.2",
-    "asia": "^0.19.7",
+    "@tunnckocore/config": "^1.0.3",
+    "asia": "^1.0.0-rc.31",
     "fs-extra": "^7.0.1",
     "simple-git": "^1.107.0"
   },
@@ -39,6 +42,7 @@
   "bin": {
     "standard-release": "cli.js"
   },
+  "main": "index.js",
   "module": "src/index.js",
   "typings": "src/index.d.ts",
   "version": "0.0.0",
