@@ -12,7 +12,10 @@ export default async function release(options) {
   }
 
   const { default: pkg } = await import(path.join(opts.cwd, 'package.json'));
+
+  // ? intentionally remove the `opts.plugin` from options passed to `git-commits-since`
   const { plugin, ...opt } = opts;
+
   const { rawCommits } = await gitCommitsSince(opt);
 
   if (rawCommits.length === 0) {

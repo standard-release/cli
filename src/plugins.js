@@ -28,11 +28,14 @@ export async function npm(options, env, results) {
       );
     }
 
+    // Never allow npm using git, we have an app for this.
+    // Replace the `false` with `opts.signGitTag` and `opts.gitTagVersion`
+    // if you reconsider that, so the CLI won't need to be used with the APP.
     await util.promisify(fs.writeFile)(
       path.join(opts.cwd, '.npmrc'),
-      `${cfg.reg}:_authToken=${cfg.token}\nsign-git-tag=${
-        opts.signGitTag
-      }\ngit-tag-version=${opts.gitTagVersion}\n`,
+      `${cfg.reg}:_authToken=${
+        cfg.token
+      }\nsign-git-tag=false\ngit-tag-version=false\n`,
     );
 
     const execOpts = { cwd: pkgFolder, stdio: 'inherit' };

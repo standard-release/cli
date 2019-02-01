@@ -6,6 +6,7 @@ const path = require('path');
 const proc = require('process');
 const parser = require('mri');
 const esmLoader = require('esm');
+const prettyConfig = require('@tunnckocore/pretty-config');
 
 const esmRequire = esmLoader(module);
 
@@ -33,4 +34,10 @@ const argv = parser(proc.argv.slice(2), {
   },
 });
 
-cli(argv, proc.env).catch(console.error);
+prettyConfig('standard-release', { cwd: argv.cwd })
+  .then((cfg) => {
+    const opts = Object.assign({}, argv, cfg);
+
+    return cli(opts, proc.env);
+  })
+  .catch(console.error);
