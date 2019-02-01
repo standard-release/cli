@@ -33,6 +33,11 @@ async function gitSetup(dir, initial) {
   return git;
 }
 
+async function createFile(pkg, filename, content) {
+  const rand = Math.floor(Math.random());
+  await fs.outputJson(path.join(pkg, filename || rand), content || { rand });
+}
+
 test('basic', async (t) => {
   t.strictEqual(typeof release, 'function');
 
@@ -48,7 +53,7 @@ test('should detect new commits', async (t) => {
 
   await fs.remove(fakePkg);
   await fs.ensureDir(fakePkg);
-  await fs.outputJson(path.join(fakePkg, 'package.json'), {
+  await fs.createFile(fakePkg, 'package.json', {
     name: '@tunnckocore/kokoko3',
   });
 
@@ -58,16 +63,16 @@ test('should detect new commits', async (t) => {
   await git.commit('feat: initial blank release');
   await git.addTag('v1.1.0');
 
-  await fs.outputFile(path.join(fakePkg, 'foo.txt'), 'bar');
+  await createFile(fakePkg);
   await git.add('./*');
   await git.commit('major(release): qxu quack');
 
-  await fs.outputFile(path.join(fakePkg, 'fix2.txt'), '222xasas');
+  await createFile(fakePkg);
   await git.add('./*');
   await git.commit('fix: fo222222o bar baz');
 
-  const result = await release({ cwd: fakePkg });
-  console.log(result);
+  const [result] = await release({ cwd: fakePkg });
+
   t.strictEqual(result.increment, 'major');
   t.strictEqual(result.lastVersion, '1.1.0');
   t.strictEqual(result.nextVersion, '2.0.0');
@@ -86,11 +91,6 @@ test('should work for monorepo setups', async () => {
 
   // the `@tunnckocore/kokoko3` package
   const fakePkgTree = path.join(fakeMonorepo, '@tunnckocore', 'kokoko3');
-
-  async function createFile(pkg, filename, content) {
-    const rand = Math.floor(Math.random());
-    await fs.outputJson(path.join(pkg, filename || rand), content || { rand });
-  }
 
   await fs.ensureDir(fakeMonorepo);
   const git = await gitSetup(fakeMonorepo, true);
