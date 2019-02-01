@@ -2,7 +2,7 @@
   "name": "@standard-release/cli",
   "description": "Publish new project to NPM following Conventional Commits specification and SemVer. Uses [git-commits-since][] for detecting git commits since last SemVer tag and [detect-next-version][] for what next version bump should be.",
   "license": "Apache-2.0",
-  "licenseStart": "2018",
+  "licenseStart": "2017",
   "scripts": {
     "docs": "docks --outfile .verb.md && verb",
     "lint": "eslint '**/*.js' --cache --fix --quiet --format codeframe",
