@@ -6,6 +6,7 @@ const path = require('path');
 const proc = require('process');
 const parser = require('mri');
 const esmLoader = require('esm');
+const prettyConfig = require('@tunnckocore/pretty-config');
 
 const esmRequire = esmLoader(module);
 
@@ -23,7 +24,20 @@ const argv = parser(proc.argv.slice(2), {
   default: {
     cwd: proc.cwd(),
     ci: true,
+    'sign-git-tag': false,
+    'git-tag-version': false,
+  },
+  alias: {
+    'dry-run': ['dryRun', 'dry'],
+    'sign-git-tag': ['signGitTag'],
+    'git-tag-version': ['gitTagVersion'],
   },
 });
 
-cli(argv).catch(console.error);
+prettyConfig('standard-release', { cwd: argv.cwd })
+  .then((cfg) => {
+    const opts = Object.assign({}, argv, cfg);
+
+    return cli(opts, proc.env);
+  })
+  .catch(console.error);

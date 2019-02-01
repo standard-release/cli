@@ -4,14 +4,15 @@
   "license": "Apache-2.0",
   "licenseStart": "2017",
   "scripts": {
+    "standard-release": "node cli.js",
     "docs": "docks --outfile .verb.md && verb",
     "lint": "eslint '**/*.js' --cache --fix --quiet --format codeframe",
-    "test-only": "node -r esm test/index.js",
-    "test": "nyc --require esm node test/index.js",
+    "test-only": "node -r esm tests/index.js",
+    "test": "nyc --require esm node tests/index.js",
     "precommit": "yarn run lint && yarn run test-only",
     "commit": "yarn dry",
     "dry": "git add -A && git status --porcelain && gitcommit",
-    "release": "node cli.js"
+    "release": "yarn standard-release"
   },
   "engines": {
     "node": "^8.10.0 || >=10.13.0"
@@ -21,16 +22,19 @@
   },
   "dependencies": {
     "@tunnckocore/execa": "^2.2.1",
+    "@tunnckocore/pretty-config": "^0.5.1",
     "dedent": "^0.7.0",
     "detect-next-version": "^4.1.0",
     "esm": "^3.2.0",
     "git-commits-since": "^2.0.4",
     "is-ci": "^2.0.0",
-    "mri": "^1.1.4"
+    "mri": "^1.1.4",
+    "rc": "^1.2.8"
   },
   "devDependencies": {
     "@tunnckocore/config": "^1.0.3",
     "asia": "^1.0.0-rc.31",
+    "dedent": "^0.7.0",
     "docks": "^0.7.0",
     "fs-extra": "^7.0.1",
     "simple-git": "^1.107.0"
@@ -46,7 +50,7 @@
   "main": "index.js",
   "module": "src/index.js",
   "typings": "src/index.d.ts",
-  "version": "0.0.0",
+  "version": "0.0.0-semantically-released",
   "repository": "standard-release/cli",
   "homepage": "https://github.com/standard-release/cli",
   "author": "Charlike Mike Reagent (https://tunnckocore.com)",

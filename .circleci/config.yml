@@ -26,9 +26,9 @@ node10linux: &node10linux
 restore_modules_cache: &restore_modules_cache
   restore_cache:
     keys:
-      - release-cli-{{ checksum "yarn.lock" }}
+      - release-cli-v2-{{ checksum "yarn.lock" }}
       # fallback to using the latest cache if no exact match is found
-      - release-cli-
+      - release-cli-v2
 
 # jobinstall: &jobinstall
 #   steps:
