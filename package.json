@@ -2,7 +2,7 @@
   "name": "@standard-release/cli",
   "description": "Publish new project to NPM following Conventional Commits specification and SemVer. Uses [git-commits-since][] for detecting git commits since last SemVer tag and [detect-next-version][] for what next version bump should be.",
   "license": "Apache-2.0",
-  "licenseStart": "2018",
+  "licenseStart": "2017",
   "scripts": {
     "standard-release": "node cli.js",
     "docs": "docks --outfile .verb.md && verb",
@@ -23,7 +23,8 @@
   "dependencies": {
     "@tunnckocore/execa": "^2.2.1",
     "@tunnckocore/pretty-config": "^0.5.1",
-    "detect-next-version": "^4.0.0",
+    "dedent": "^0.7.0",
+    "detect-next-version": "^4.1.0",
     "esm": "^3.2.0",
     "git-commits-since": "^2.0.4",
     "is-ci": "^2.0.0",
