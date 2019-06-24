@@ -20,7 +20,7 @@
     "esm": "^3.2.0"
   },
   "dependencies": {
-    "@tunnckocore/execa": "^2.2.1",
+    "@tunnckocore/execa": "^4.1.0",
     "dedent": "^0.7.0",
     "detect-next-version": "^4.1.0",
     "esm": "^3.2.0",
