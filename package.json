@@ -33,7 +33,7 @@
     "asia": "^1.0.0-rc.31",
     "docks": "^0.7.0",
     "fs-extra": "^7.0.1",
-    "simple-git": "^1.107.0"
+    "simple-git": "^3.3.0"
   },
   "files": [
     "src",
